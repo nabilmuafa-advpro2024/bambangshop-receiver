@@ -59,25 +59,25 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   Open another new terminal, edit `ROCKET_PORT` in `.env` to `8003`, then execute `cargo run`.
 
 ## Mandatory Checklists (Subscriber)
--   [ ] Clone https://gitlab.com/ichlaffterlalu/bambangshop-receiver to a new repository.
+-   [x] Clone https://gitlab.com/ichlaffterlalu/bambangshop-receiver to a new repository.
 -   **STAGE 1: Implement models and repositories**
-    -   [ ] Commit: `Create Notification model struct.`
-    -   [ ] Commit: `Create SubscriberRequest model struct.`
-    -   [ ] Commit: `Create Notification database and Notification repository struct skeleton.`
-    -   [ ] Commit: `Implement add function in Notification repository.`
-    -   [ ] Commit: `Implement list_all_as_string function in Notification repository.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
+    -   [x] Commit: `Create Notification model struct.`
+    -   [x] Commit: `Create SubscriberRequest model struct.`
+    -   [x] Commit: `Create Notification database and Notification repository struct skeleton.`
+    -   [x] Commit: `Implement add function in Notification repository.`
+    -   [x] Commit: `Implement list_all_as_string function in Notification repository.`
+    -   [x] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
 -   **STAGE 3: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Commit: `Implement receive_notification function in Notification service.`
-    -   [ ] Commit: `Implement receive function in Notification controller.`
-    -   [ ] Commit: `Implement list_messages function in Notification service.`
-    -   [ ] Commit: `Implement list function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
+    -   [x] Commit: `Create Notification service struct skeleton.`
+    -   [x] Commit: `Implement subscribe function in Notification service.`
+    -   [x] Commit: `Implement subscribe function in Notification controller.`
+    -   [x] Commit: `Implement unsubscribe function in Notification service.`
+    -   [x] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [x] Commit: `Implement receive_notification function in Notification service.`
+    -   [x] Commit: `Implement receive function in Notification controller.`
+    -   [x] Commit: `Implement list_messages function in Notification service.`
+    -   [x] Commit: `Implement list function in Notification controller.`
+    -   [x] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -89,3 +89,6 @@ This is the place for you to write reflections:
 2. Karena Rust memiliki aturan yang cukup ketat dalam mengelola variabel statis. Apabila variabel statis bersifat mutable, maka variabel tersebut dapat memunculkan masalah-masalah terkait keamanan dan juga berpotensi merusak thread safety. Oleh karena itu, digunakanlah lazy_static yang juga berfungsi untuk membuat variabelnya menjadi Singleton, hanya ada satu di programnya.
 
 #### Reflection Subscriber-2
+1. Saya belum sempat terlalu banyak melakukan eksplorasi. Kalau boleh jujur, alasannya adalah karena kurangnya waktu akibat mengerjakan tutorial ini terlalu dekat dengan deadline. Akan tetapi, saya tertarik untuk melakukan eksplorasi karena menurut saya konsep Observer pattern ini berharga untuk dipelajari lebih lanjut dan suatu saat bisa saja _come in handy_ apabila ada proyek-proyek yang bisa mengimplementasikan fitur ini.
+2. Pada kasus BambangShop ini, Observer pattern bisa mempermudah penambahan observer baru, baik jenis yang sama maupun jenis yang berbeda karena program sudah ditulis dengan menerapkan prinsip Open-Closed. Hanya saja untuk jenis observer tambahan, mungkin akan diperlukan adanya trait untuk lebih mengaplikasikan prinsip Open-Closed. Dengan Observer pattern pada kasus ini, setiap subscriber saling terpisahkan satu sama lain dan tidak bergantung pada implementasi di source, dan perubahan state subscribe atau tidak juga bisa dilakukan tanpa perlu mengubah kode. Pada kasus lebih dari satu instance dari Main app, penambahan subscriber juga masih akan memungkinkan, yang penting penambahan subscriber dilakukan dengan mengarahkan ke API yang tepat.
+3. Saya sudah mencoba membuat beberapa test tambahan pada Postman collection yang telah diberikan. Hal ini membantu saya untuk melakukan eksplorasi dan lebih melihat behavior sistem secara menyeluruh untuk memastikan API yang saya kembangkan sudah berfungsi dengan baik dan semua kasus yang mungkin terjadi juga sudah di-handle. Proses ini dapat membantu saya membiasakan diri untuk melakukan tes pada Postman untuk menguji API yang telah dibuat dan interaksinya antar service.
