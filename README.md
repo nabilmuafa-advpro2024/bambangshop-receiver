@@ -85,5 +85,7 @@ This is the place for you to write reflections:
 ### Mandatory (Subscriber) Reflections
 
 #### Reflection Subscriber-1
+1. Penggunaan RwLock<> dibanding Mutex<> disini lebih optimal karena dapat memungkinkan akses bersama untuk Read dan akses secara eksklusif untuk Write. Ini cocok untuk sistem notifikasi yang sudah ada karena akan ada banyak thread yang Read notifikasi secara bersamaan tanpa ada write, namun hanya ada satu thread yang Write notifikasi. Mutex<> disini tidak digunakan karena Mutex<> memungkinkan hanya satu thread untuk memiliki akses variabel dalam satu waktu. Untuk sistem notifikasi kita, penggunaan Mutex<> tidak akan memungkinkan karena pada proses ini akan ada banyak thread yang perlu Read suatu notifikasi.
+2. Karena Rust memiliki aturan yang cukup ketat dalam mengelola variabel statis. Apabila variabel statis bersifat mutable, maka variabel tersebut dapat memunculkan masalah-masalah terkait keamanan dan juga berpotensi merusak thread safety. Oleh karena itu, digunakanlah lazy_static yang juga berfungsi untuk membuat variabelnya menjadi Singleton, hanya ada satu di programnya.
 
 #### Reflection Subscriber-2
